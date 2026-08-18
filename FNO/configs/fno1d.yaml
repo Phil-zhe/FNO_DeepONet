@@ -1,0 +1,16 @@
+data_path: data/processed/burgers_nu0p01_N1200_Nx256.npz
+train_size: 1000
+val_size: 100
+test_size: 100
+model:
+  modes: 16
+  width: 32
+  depth: 4
+  fc_dim: 128
+train:
+  batch_size: 32
+  epochs: 300
+  lr: 0.001
+  weight_decay: 0.0001
+  amp: true
+  seed: 2026

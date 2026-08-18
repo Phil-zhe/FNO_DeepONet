@@ -1,0 +1,56 @@
+seed: 42
+device:
+  use_gpu: true
+  use_amp: true
+  num_workers: 0
+
+paths:
+  data_dir: data/processed
+  dataset_name: burgers_nu0.01_N1000_nx256_nt101.npz
+  checkpoint_dir: results/checkpoints
+  log_dir: results/logs
+  figure_dir: results/figures
+  best_model: results/checkpoints/best_model.pt
+  loss_history: results/logs/loss_history.csv
+  predictions: results/predictions_test.npz
+
+data:
+  nx: 256
+  nt: 101
+  total_samples: 1000
+  n_train: 800
+  n_val: 100
+  n_test: 100
+  nu: 0.01
+  T: 1.0
+  num_modes: 5
+  ic_max_abs: 1.2
+  dealias: true
+  save_every_sample_stats: false
+
+dataset:
+  n_sensors: 128
+  n_query: 128
+  sensor_mode: uniform
+  normalize: true
+
+model:
+  latent_dim: 128
+  hidden_dim: 128
+  branch_depth: 4
+  trunk_depth: 4
+  activation: GELU
+  dropout: 0.0
+
+training:
+  batch_size: 32
+  epochs: 500
+  learning_rate: 0.001
+  weight_decay: 0.0001
+  early_stopping_patience: 50
+  grad_clip_norm: 1.0
+  print_every: 1
+
+evaluation:
+  batch_size: 32
+  num_plot_examples: 5
